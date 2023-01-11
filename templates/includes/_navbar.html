@@ -1,0 +1,46 @@
+<header class="p-3 text-bg-dark">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/">
+            <img src="{{ url_for('static', filename = 'images/logo.png') }}" width="30" height="30" alt="">
+        </a>
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
+          <li><a href="/listings" class="nav-link px-2 text-white">Listings</a></li>
+          <li><a href="/about" class="nav-link px-2 text-white">About</a></li>
+        </ul>
+        <form id = "your_form" class= "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" onsubmit="yourFunction()">
+          <input type="text" class="form-control form-control-dark text-bg-dark " placeholder="Search..." aria-label="Search" name="keywords">
+        </form>
+        
+      <script>
+        function yourFunction(){
+        var action_src = "http://localhost:5000/search_listing/" + document.getElementsByName("keywords")[0].value;
+        your_form = document.getElementById('your_form');
+        your_form.action = action_src ;
+      }
+      </script>
+        <!--
+        <form action = "/search_listing/"method = "POST" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+          <input type="text" name = "name" id =class="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search">
+          <input type=submit name="submit">
+        </form>
+        -->
+        
+
+        <div class="text-end">
+          {% if session.logged_in %}
+            <a href="/dashboard" class="btn btn-outline-light me-2" role="button">Dashboard</a>
+            <a href="/logout" class="btn violet" role="button">Logout</a>
+          {% else %}
+            <a href="/login" class="btn btn-outline-light me-2" role="button">Login</a>
+            <a href="/register" class="btn violet" role="button">Sign-up</a>
+          {% endif %}
+          
+        </div>
+        
+      </div>
+      
+    </div>
+  
+  </header>

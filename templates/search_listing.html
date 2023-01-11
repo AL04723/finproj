@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<div class="container px-4">
+    <div class="row g-3">
+        {% for listing in listings %} 
+            <div class="col-6  border rounded mb-1 p-2 text-center ">
+                <a href = "/result/{{listing.title}}" class = "link-dark text-decoration-none"><img src="{{ url_for('serve_image', filename='{}'.format(listing.file)) }}" class="fit rounded mx-auto d-block"/>
+                    <br>
+                    <h4 class="fw-bold">{{listing.company}}</h4>
+                    <p class="fw-bold">{{listing.title}}</p></a>
+            </div> 
+        {% endfor %}
+    </div>
+</div>
+   
+{% endblock %}

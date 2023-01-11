@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+    <div class = "container"> 
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <img src="{{ url_for('serve_image', filename='{}'.format(listing.file)) }}" class="fit rounded mx-auto d-block"/> 
+                <div class="text-center">
+                    <br>
+                    <h2 class="fw-bold">{{listing.title}}</h2>
+                    <small class="text-muted fs-7">Created by {{listing.username}} on {{listing.create_date}}</small>
+                </div>
+                <hr>
+                <ul class = "list-group mb-1 p-2">
+                    <li class="list-group-item"><div class="fw-bold">Company:</div> {{listing.company}}</li>
+                    <li class="list-group-item"><div class="fw-bold">Salary:</div> {{listing.salary}}</li>
+                    <li class="list-group-item"><div class="fw-bold">Description:</div> {{listing.body | safe}}</li>
+                </ul>
+            </div>
+          </div>
+        
+    </div>
+    
+    
+{% endblock %}

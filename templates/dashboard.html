@@ -1,0 +1,32 @@
+{% extends 'layout.html' %}
+
+{% block body %} 
+    <h1>Dashboard <small class="text-muted fs-4">Welcome {{session.username}}</small></h1>
+    <a class = "btn violet" href = "/add_listing">Add a listing</a>
+    <hr>
+
+    <table class = "table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Salary</th>
+            <th>Price</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for listing in listings %}
+        <tr>
+            <td>{{listing.title}}</td>
+            <td>{{listing.company}}</td>
+            <td>{{listing.salary}}</td>
+            <td>{{listing.create_date}}</td>
+            <td><a href="edit_listing/{{listing.id}}" class = "btn btn-dark float-right">Edit</a></td>
+            <td>
+                <form action="{{url_for('delete_listing',id=listing.id)}}" method ="post">
+                    <input type = "hidden" name="method" value="DELETE">
+                    <input type = "submit" value="Delete" class = "btn violet">
+                </form>
+            </td>
+        {% endfor %}
+    </table>
+{% endblock %}

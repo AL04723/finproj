@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block body %} 
+<div class = "text-bg-light p-5">
+    <div class="jumbotron text-center my-4">
+        <h1 class="display-4">JOB-OL</h1>
+        <p class="lead">Create an online job listing</p>
+        {% if session.logged_in == null %}
+        <a href="/login" class="btn btn-dark me-2" role="button">Login</a>
+        <a href="/register" class="btn violet" role="button">Sign-up</a>
+        {% endif %}
+        <hr class="mx-5 my-4">
+      </div>
+</div>
+
+
+{% endblock %}
